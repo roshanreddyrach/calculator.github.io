@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+    *,::after,::before{
+        box-sizing: border-box;
+        font-family: 'PT Sans', sans-serif;
+        font-weight: bold;
+
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        background:linear-gradient(to right,blue,green);
+    }
+    .calculator-grid{
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        min-height: 100vh;
+        grid-template-columns: repeat(4,100px);
+        grid-template-rows: minmax(120px,auto) repeat(5,100px);
+    }
+    .calculator-grid>button{
+        cursor: pointer;
+        font-size: 2rem;
+        border: 1px solid white;
+        outline: none;
+        /* buttons by default have an outline */
+        background-color: rgb(255, 255, 255,.75);
+    }
+    .calculator-grid>button:hover{
+        background-color: rgb(255, 255, 255,.90);
+    }
+    .span-two{
+        grid-column: span 2;
+    }
+    .output{
+        grid-column: 1 / -1;
+        /* -1 is the last column */
+        /* fills the entire width of top row */
+        background-color: rgb(0, 0, 0,.75);
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        flex-direction: column;
+        padding: 10px;
+        word-wrap: break-word;
+        word-break: break-all;
+        /* which will allows us to break the words as the output reaches the max width */
+    }
+    .previous-operand{
+        color: rgb(255, 255, 255,.75);
+        font-size: 1.5rem;
+    }
+    .current-operand{
+        color: white;
+        font-size: 2.5rem;
+    }
+</style>
+<body>
+      <div class="calculator-grid">
+
+
+        <div class="output">
+            <div data-previous-operand class="previous-operand"></div>
+            <div data-current-operand class="current-operand"></div>
+        </div>
+        <button data-all-clear>AC</button>
+        <button data-delete>DEL</button>
+        <button data-operation>%</button>
+        <button data-operation>÷</button>
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button data-operation>*</button>
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button data-operation>+</button>
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button data-operation>-</button>
+        <button data-number>.</button>
+        <button data-number>0</button>
+        <button data-number>00</button>
+        <button data-equals>=</button>
+        <!-- we are using data attributes instead of classes because its easy to see which part of html is used by JS and CSS -->
+    </div>
+
+    <script src="calculator.js"></script>
+
+</body>
+</html>
